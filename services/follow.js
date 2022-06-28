@@ -5,7 +5,6 @@ import { Follow, User } from "../models/index.js";
  * @returns list of users userId is following
  */
 export async function listFollowing(userId) {
-    console.log('inhere', userId)
     const matches = await Follow.find({ follower: userId }).populate('following');
     const users = matches.map(m => m.following)
     
@@ -18,10 +17,8 @@ export async function listFollowing(userId) {
  * @returns  list of followers
  */
 export async function listFollowers(userId) {
-    console.log('here yeah', userId)
     const matches = await Follow.find({ following: userId }).populate('follower');
     const users = matches.map(m => m.follower)
-        console.log('userssss', users)
     return users;
 }
 

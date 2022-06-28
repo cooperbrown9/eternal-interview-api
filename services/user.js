@@ -23,7 +23,6 @@ export async function update(user) {
     
     // dont mess with the ID (in prod I would make a check for this on the User model itself)
     delete user._id;
-    console.log(user)
     const u = await User.findByIdAndUpdate(userId, { $set: { ...user }}, { new: true })
 
     return u;
