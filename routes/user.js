@@ -8,6 +8,7 @@ UserRouter.route("/").post(UserController.create);
 UserRouter.route("/").get(UserController.find);
 
 UserRouter.route("/:userId").get(AuthMiddleware.verifySession, UserController.get);
+UserRouter.route("/:userId").post(AuthMiddleware.verifySession, UserController.update);
 
 UserRouter.route("/:userId/follow").get(AuthMiddleware.verifySession, FollowController.list);
 UserRouter.route("/:userId/follow").post(AuthMiddleware.verifySession, FollowController.follow);

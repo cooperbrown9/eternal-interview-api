@@ -14,13 +14,25 @@ export async function login(req, res, next) {
     req.session.save((err) => {
       if(err) {
         console.log('Couldnt save user', err)
-        return next()
+        throw err;
       }
 
       return res.status(201).send(user);
     })
   } catch (e) {
     return next(e);
+  }
+}
+
+export async function logout(req, res, next) {
+  try {
+    req.session.destroy((err) => {
+      if(err) throw err;
+
+      return res.status(201).send({ success: true })
+    })
+  } catch(e) {
+    return next(e)
   }
 }
 

@@ -11,6 +11,16 @@ const UserSchema = new mongoose.Schema({
     default: "abc123",
   },
 
+  birthday: {
+    type: Date,
+    default: Date.now
+  },
+
+  location: {
+    type: String,
+    default: ""
+  },
+  
   email: {
     type: String,
     required: true,
